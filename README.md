@@ -8,21 +8,29 @@
 ---
 
 ## Project Description
-Reactive Spring Cloud API Gateway providing single entry routing to User, Course, and Media microservices.
+Reactive Spring Cloud API Gateway providing single entry point routing, Eureka client load balancing, and CORS handling for all EduCloud microservices.
+
+---
+
+## Routing Configuration
+- /api/v1/users/** -> lb://user-service
+- /api/v1/courses/** -> lb://course-service
+- /api/v1/media/** -> lb://media-service
 
 ---
 
 ## Technology Stack
 - Java 25
 - Spring Boot 4.1.1
-- Spring Cloud 2025.1.3
+- Spring Cloud Gateway WebFlux (2025.1.3)
+- Eureka Discovery Client
 - PM2 Process Manager
-- Google Cloud Platform
 
 ---
 
-## Getting Started & Local Setup
-```bash
+## Running Locally
+- Default Port: 8080
+`ash
 ./mvnw clean package
 java -jar target/api-gateway-0.0.1-SNAPSHOT.jar
-```
+`
