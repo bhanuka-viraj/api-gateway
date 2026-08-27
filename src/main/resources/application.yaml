@@ -12,21 +12,22 @@ spring:
           lower-case-service-id: true
       routes:
         - id: user-service-route
-          uri: lb://user-service
+          uri: ${USER_SERVICE_URI:lb://USER-SERVICE}
           predicates:
             - Path=/api/v1/users/**
         - id: course-service-route
-          uri: lb://course-service
+          uri: ${COURSE_SERVICE_URI:lb://COURSE-SERVICE}
           predicates:
             - Path=/api/v1/courses/**
         - id: media-service-route
-          uri: lb://media-service
+          uri: ${MEDIA_SERVICE_URI:lb://MEDIA-SERVICE}
           predicates:
             - Path=/api/v1/media/**
       globalcors:
+        add-to-simple-url-handler-mapping: true
         cors-configurations:
           '[/**]':
-            allowedOrigins: "*"
+            allowedOriginPatterns: "*"
             allowedMethods:
               - GET
               - POST
