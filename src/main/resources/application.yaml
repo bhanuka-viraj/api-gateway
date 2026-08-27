@@ -23,6 +23,18 @@ spring:
           uri: ${MEDIA_SERVICE_URI:lb://MEDIA-SERVICE}
           predicates:
             - Path=/api/v1/media/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: false
 
 
 eureka:
